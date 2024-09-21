@@ -20,6 +20,7 @@ router.post(
 
     // Kullanıcıyı e-postaya göre bul
     const user: any = await User.findOne({ where: { email } });
+    
     if (!user) {
       throw new BadRequestError("E-posta veya şifre hatalı.");
     }

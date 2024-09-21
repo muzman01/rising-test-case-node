@@ -40,7 +40,7 @@ export const authMiddleware = (
     const payload = jwt.verify(token, process.env.JWT_KEY!) as UserPayload;
     req.userId = payload.id; // Kullanıcı kimliğini isteğe ekle
     next(); // Middleware işlemi tamamla
-  } catch (err) {
+  } catch (_) {
     res.status(401).send({ error: "Geçersiz token." });
   }
 };

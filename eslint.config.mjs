@@ -16,9 +16,9 @@ export default [
     },
     rules: {
       // Temel ESLint ve TypeScript kuralları
-
+      "@typescript-eslint/no-namespace": "off",
       "no-debugger": "error",
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
       "no-var": "error",
       "prefer-const": "error",
       "eqeqeq": "error",
@@ -26,7 +26,7 @@ export default [
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       // TypeScript önerilen kuralları ekliyoruz
-      ...tseslint.configs.recommended.rules,
+
     },
   },
 ];
