@@ -7,9 +7,12 @@ import "dotenv/config";
 import { sequelize } from "./models"; // Tüm modeller burada import edilir
 import { errorHandler } from "./errors/errorHandler";
 
-// user routes
+// use routes
 import { signupRouter } from "./routes/signup";
 import { signinRouter } from "./routes/signin";
+import { addOrderRouter } from "./routes/addOrder";
+import { addServiceRouter } from "./routes/addServices";
+import { listOrdersRouter } from "./routes/listOrders";
 
 const app = express();
 
@@ -26,6 +29,13 @@ app.use(
 // user login register
 app.use(signupRouter);
 app.use(signinRouter);
+
+// order routes
+app.use(addOrderRouter)
+app.use(listOrdersRouter)
+
+// service routes
+app.use(addServiceRouter)
 
 // error handler
 app.use(errorHandler);
