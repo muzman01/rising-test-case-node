@@ -3,10 +3,13 @@ import session from "express-session";
 import "express-async-errors";
 import "dotenv/config";
 
-
 // services
 import { sequelize } from "./models"; // Tüm modeller burada import edilir
 import { errorHandler } from "./errors/errorHandler";
+
+// user routes
+import { signupRouter } from "./routes/signup";
+import { signinRouter } from "./routes/signin";
 
 const app = express();
 
@@ -19,6 +22,12 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// user login register
+app.use(signupRouter);
+app.use(signinRouter);
+
+// error handler
 app.use(errorHandler);
 
 sequelize.sync({ force: false }).then(() => {
